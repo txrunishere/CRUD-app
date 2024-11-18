@@ -3,8 +3,13 @@ const router = express.Router();
 const User = require('../models/user');
 
 
-router.get('/users', (req, res) => {
-    res.send("All Users");
+router.get('/', (req, res) => {
+    res.render("index", { title: "Home Page" });
 });
 
-module.exports = router
+router.get("/add", (req, res) => {
+    res.render("add-user", { title: "Add User" });
+});
+
+module.exports = router;
+
