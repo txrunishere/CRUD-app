@@ -26,6 +26,8 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use(express.static('./uploads'))
+
 // Templating engine
 app.set("view engine", "ejs");
 
