@@ -141,4 +141,38 @@ router.post('/update/:id', uploads, async (req, res) => {
 });
 
 
+/**
+ * DELETE /
+ * Delete a User
+ */
+router.get('/delete/:id', async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        // Find and delete the user
+        const user = await User.findByIdAndDelete(id);
+
+        // If the user exists and has an image, delete the image from the filesystem
+        if (user && user.image) {
+            const imagePath = path.join(__dirname, 'uploads', user.image);
+            try {
+                fs.unlinkSync(imagePath); // Delete the image file
+            } catch (error) {
+                console.error('Error deleting the image:', error);
+            }
+        }
+
+        // Set the session message and redirect if successful
+        req.session.message = {
+            type: 'info',
+            message: 'User deleted successfully'
+        };
+        res.redirect('/');
+    } catch (err) {
+        // Handle any errors during the deletion process
+        res.redirect('/');
+    }
+});
+
+
 module.exports = router;

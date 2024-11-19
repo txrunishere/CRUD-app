@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const {connectToMongoDB} = require('./connect');
+const methodOverride = require('method-override');
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -13,6 +14,7 @@ connectToMongoDB(process.env.MONGO_URL).then(() => console.log("Connection Succe
 // Middlewares
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
+app.use(methodOverride('_method'));
 
 app.use(session({
     secret: "tarun@1123$098",
