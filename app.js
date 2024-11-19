@@ -8,7 +8,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 //Mongoose Connection
-connectToMongoDB("mongodb://127.0.0.1:27017/CRUD-app").then(() => console.log("Connection Success")).catch((err) => console.log("Error is", err));
+connectToMongoDB(process.env.MONGO_URL).then(() => console.log("Connection Success")).catch((err) => console.log("Error is", err));
 
 // Middlewares
 app.use(express.urlencoded({extended: false}));
