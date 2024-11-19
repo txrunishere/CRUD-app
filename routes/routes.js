@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require('../models/user');
 const multer = require('multer');
 const fs = require('fs');
+const path = require('path');
 
 
 // Image Upload
@@ -154,7 +155,7 @@ router.get('/delete/:id', async (req, res) => {
 
         // If the user exists and has an image, delete the image from the filesystem
         if (user && user.image) {
-            const imagePath = path.join(__dirname, 'uploads', user.image);
+            const imagePath = path.join('./uploads', user.image);
             try {
                 fs.unlinkSync(imagePath); // Delete the image file
             } catch (error) {
@@ -171,6 +172,7 @@ router.get('/delete/:id', async (req, res) => {
     } catch (err) {
         // Handle any errors during the deletion process
         res.redirect('/');
+        console.log(err);
     }
 });
 
