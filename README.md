@@ -19,9 +19,9 @@ This is a simple CRUD (Create, Read, Update, Delete) application built with Expr
 ## How to Run
 
 1. Clone the repository :
-
+```
 git clone https://github.com/txrunishere/CRUD-app.git    
-
+```
 2. Navigate to the project folder:
 
 cd CRUD-app 
