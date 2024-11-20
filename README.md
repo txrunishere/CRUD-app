@@ -23,17 +23,17 @@ This is a simple CRUD (Create, Read, Update, Delete) application built with Expr
 git clone https://github.com/txrunishere/CRUD-app.git    
 ```
 2. Navigate to the project folder:
-
+```
 cd CRUD-app 
-
+```
 3. Install dependencies:
-
+```
 npm install
-
+```
 4. Set up your environment variables in a .env file (e.g., database connection URI and PORT).
 
 5. Start the server:
-
+```
 npm start
-
+```
 6. Access the app in your browser or API client at http://localhost:8080.
